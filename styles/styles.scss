@@ -3,7 +3,7 @@
 .textopres {
 
     background-color: #d6f77a;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Tiro Gurmukhi', serif;
     height: 500px;
     font-size: larger;
     padding: 15px;
@@ -15,9 +15,15 @@
     justify-content: center;    
     text-align: center;
 
+    p {
+        font-size: 25px;
+    }
+
 }
 
 /* Diseño informacion basica */
+
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital@1&family=Tiro+Gurmukhi:ital@1&display=swap');
 
 .info img{
 
@@ -60,49 +66,75 @@
 
 }
 
+.infmain {
+
+    div {
+        height: 200px;
+    }
+
+    h2 {
+        font-family: 'PT Sans', sans-serif;
+        list-style-type: none;
+        margin: 10px;
+        text-align: center;
+    }
+  
+    p {
+        font-family: 'Tiro Gurmukhi', serif;
+        font-size: 20px;
+        list-style-type: none;
+        margin: 2px;
+        text-align: center;
+    }
+    
+}
+
 /* Diseño nosotros */
 
-$noticias: (
-    card-1: #cdf363e1,
-    card-2: #d3efffd2,
-    card-3: #f8eeb7,
-);
 
-@each $red, $color in $noticias {
-    .red-#{$red} {
-        background-color: $color;
-    }
-}
 
-@mixin fontstyle-nosotros ( $font, $height, $fontsi, $magint, $padd, $textal) {
-    font-family: $font;
-    height:$height;
-    font-size: $fontsi;
-    margin-top:$magint;
-    padding: $padd;
-    text-align: $textal;
-    
-}
-
-.header-nosotros{
-
-    display: grid;
-    grid-gap: 50px;
-    grid-row: auto;
-    text-align: center;
+.container-nos {
+    width: 100%;
+    max-width: 1200px;
+    height: 430px;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-
+    margin: auto;
+    font-family: 'PT Sans', sans-serif; ;
 }
-.texto-nos  {
 
-    @include fontstyle-nosotros('Lucida Sans', 100%, 20px, 20px, 5%, center);
-    background-image: linear-gradient(#64b3f4 15% , #c2e59c );
-    
-    display: grid;
-    grid-template-columns: auto;
-    grid-gap: 50px;
+.container-nos  .card{
+    width: 330px;
+    height: 430px;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    margin: 20px;
+    text-align: center;
+    transition: all 0.25s;
+}
 
-} 
+.container-nos .card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+}
+
+.container-nos .card img{
+    width: 330px;
+    height: 220px;
+}
+
+.container-nos .card h4 {
+    font-weight: 600;
+ 
+}
+
+.container-nos .card p {
+    padding: 0 1rem;
+    font-size: 16px;
+    font-weight: 300;
+}
 
 /* Diseño noticias */
 
@@ -235,7 +267,7 @@ $noticias: (
 
 } 
 
-.header-cont {
+.main-cont {
 
     clip-path: 
         polygon(
@@ -246,19 +278,6 @@ $noticias: (
         );
     
 }
-
-.titulo-cont {
-    @extend .header-cont;
-    background: url(../public/aceite.jpg);
-    width: 100%;
-    height: 200px;
-    text-align: center;
-    padding-top: 11%;
-    font-size: 40px;
-    font-family: sans-serif;
-    color: rgba(106, 109, 33, 0.436);
-}
-
 
 .form-registro {
 
