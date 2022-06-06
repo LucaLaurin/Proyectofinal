@@ -1,0 +1,354 @@
+@import "nav";
+
+.textopres {
+
+    background-color: #d6f77a;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    height: 500px;
+    font-size: larger;
+    padding: 15px;
+    margin-top: 50px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;    
+    text-align: center;
+
+}
+
+/* Diseño informacion basica */
+
+.info img{
+
+    height: 100%;
+    width: 70%;
+    padding-left: 30%;
+    margin-bottom: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    opacity: 1; 
+
+    animation: {
+
+        name: fade-in;
+        iteration-count: 1; 
+        timing-function: ease;
+        duration: 2s;
+        delay: .5s;
+    }
+
+}
+
+@keyframes fade-in {
+    0% {
+        transform: translateX(800px);
+        opacity: 0;
+    }
+
+    50% {
+        transform: translateX(20px);
+        opacity: .5;
+    }
+
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+
+}
+
+/* Diseño nosotros */
+
+$noticias: (
+    card-1: #cdf363e1,
+    card-2: #d3efffd2,
+    card-3: #f8eeb7,
+);
+
+@each $red, $color in $noticias {
+    .red-#{$red} {
+        background-color: $color;
+    }
+}
+
+@mixin fontstyle-nosotros ( $font, $height, $fontsi, $magint, $padd, $textal) {
+    font-family: $font;
+    height:$height;
+    font-size: $fontsi;
+    margin-top:$magint;
+    padding: $padd;
+    text-align: $textal;
+    
+}
+
+.header-nosotros{
+
+    display: grid;
+    grid-gap: 50px;
+    grid-row: auto;
+    text-align: center;
+    justify-content: center;
+
+}
+.texto-nos  {
+
+    @include fontstyle-nosotros('Lucida Sans', 100%, 20px, 20px, 5%, center);
+    background-image: linear-gradient(#64b3f4 15% , #c2e59c );
+    
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 50px;
+
+} 
+
+/* Diseño noticias */
+
+@mixin fontstyle-noticias ($width, $height, $top, $left, $position) {
+
+    width: $width;
+    height: $height;
+    top: $top;
+    left: $left;
+    position: $position;
+    
+}
+
+.contenedor-not {
+    font-family: "inter", sans-serif;
+    max-width: 800px;
+    padding: 32px 24px;
+    margin: 0 auto;
+    color: #1b1624;
+    background: #7ba6bb;
+}
+
+.titulo-not {
+
+    font: { 
+        weight: 900;
+        size: 43px;
+    }
+    max-width: 20ch;
+    margin-bottom: 30px;
+}
+
+.noticias-cont {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 20px;
+    padding: 0;
+    list-style-type: none;
+}
+
+.news {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    aspect-ratio: 1/1;
+    position: relative;
+    padding: 24px;
+    color: #ffffff;
+    backface-visibility: hidden;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.news::before,
+.news::after {
+    content: "";
+    @include fontstyle-noticias (100%, 100%, 0, 0, absolute);   
+}
+
+.news  {
+    z-index: 1; 
+}
+
+.news img {
+    @include fontstyle-noticias (100%, 100% , 0 , 0, absolute );
+    margin: 0;
+    z-index: -1;
+    object-fit: cover;
+    filter: grayscale(1);
+    transition: filter 200ms ease, transform 250ms linear;
+}
+
+.news:hover::after,
+.news:focus::after,
+.news:hover::before,
+.news:focus::before {
+    opacity: 0.7;
+}
+
+.news:hover p,
+.news:focus p {
+    opacity: 1;
+    transition-delay: 200ms;
+}
+.news:hover img,
+.news:focus img {
+    filter: grayscale(0);
+    transform: scale(1.05) rotate(1deg);
+}
+
+.news h2,
+.news p {
+    transform: translatey(20px);
+}
+
+.news h2 {
+
+    font: {
+        size: 24px;
+        weight: 900;
+    } 
+    line-height: 1.2;
+    letter-spacing: 0.03ch;
+    transition: 300ms transform ease;
+}
+
+.news p {
+
+    font: {
+        size: 24px;
+        weight: 500;
+    } 
+    opacity: 0;
+    transition: 300ms opacity linear, 300ms transform ease-in-out;
+}
+
+.news:hover :is(h2,p),
+.news:focus :is(h2,p) {
+    transform: none;
+}
+
+/* Main Contacto */
+
+.main-cont {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    align-items: center;
+    background-image: linear-gradient(0deg, #85FFBD 14%, #FFFB7D 87%);
+
+} 
+
+.header-cont {
+
+    clip-path: 
+        polygon(
+            0% 0%,
+            100% 0%,
+            100% calc (100% - 15%),
+            0% 100%
+        );
+    
+}
+
+.titulo-cont {
+    @extend .header-cont;
+    background: url(../public/aceite.jpg);
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    padding-top: 11%;
+    font-size: 40px;
+    font-family: sans-serif;
+    color: rgba(106, 109, 33, 0.436);
+}
+
+
+.form-registro {
+
+    width: 200px;
+    background-color: #c2e59c;
+    padding: 30px;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    border-radius: 4px;
+    font-family: 'Calibri', 'Gill Sans MT';
+    color: white;
+    box-shadow: 7px 13px 37px #000;
+}
+
+.form-registro h4 {
+
+    font-size: 22px;
+    margin-bottom: 20px;
+
+}
+
+.controls {
+
+    width: 100%;
+    background-color:#d7ecbf;
+    padding: 10px 0 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 1px solid #062002;
+    font-family: 'Calibri', 'Gill Sans MT' ;
+    font-size: 18px;
+
+}
+
+.form-registro p {
+
+    height: 4px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.form-registro a {
+
+    color: white;
+    text-decoration: none;
+}
+
+.form-registro a:hover {
+
+    color: white;
+    text-decoration: underline;
+}
+
+.form-registro .botons {
+
+    width: 100%;
+    background-color: #aec792;
+    border: none;
+    padding: 13px;
+    color: white;
+    margin: 16px 0 16px;
+    font-size: 16px;
+
+}
+
+@media screen and (min-width:426px ) {
+
+    .main-cont  {
+
+        background-image: linear-gradient(#64b3f4 15% , #c2e59c );
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size: larger;
+    
+        display: grid;
+        grid-template-columns: 1fr;
+        align-content: center;
+    }
+    .form-registro {
+
+        width: 400px;
+        background-color: #c2e59c;
+        padding: 30px;
+        margin: auto;
+        margin-top: 100px;
+        margin-bottom: 100px;
+        border-radius: 4px;
+        font-family: 'Calibri', 'Gill Sans MT';
+        color: white;
+        box-shadow: 7px 13px 37px #000;
+    }
+}
